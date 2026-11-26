@@ -15,7 +15,7 @@ class AdminReceiver : DeviceAdminReceiver() {
     // Runs inside the new work profile once Android finishes creating it.
     override fun onProfileProvisioningComplete(context: Context, intent: Intent) {
         val dpm = context.getSystemService(DevicePolicyManager::class.java)
-        val admin = getComponentName(context)
+        val admin = ComponentName(context, AdminReceiver::class.java)
         dpm.setProfileName(admin, "Clone Space")
 
         // Let the personal side send "clone this package" requests into the profile.
